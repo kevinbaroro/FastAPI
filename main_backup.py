@@ -3,7 +3,6 @@ from fastapi import FastAPI, UploadFile, File,HTTPException
 from pydantic import BaseModel
 import pdfquery
 import fitz
-import tempfile
 from fastapi.responses import JSONResponse
 from fastapi.responses import StreamingResponse
 from io import BytesIO
