@@ -29,8 +29,8 @@ async def find_word(pdf_file: UploadFile):
             pdf.tree.write('pdf_data.xml', pretty_print=True)
 
             # Find fields
-            po_number = pdf.pq('LTTextLineHorizontal:in_bbox("377.47, 615.572, 435.31, 623.612")').text()
-            vendor_code = pdf.pq('LTTextBoxHorizontal:in_bbox("142.46, 605.732, 178.954, 613.772")').text()
+            po_number = pdf.pq('LTTextBoxHorizontal:in_bbox("397.944, 527.256, 455.752, 535.256")').text()
+            vendor_code = pdf.pq('LTTextBoxHorizontal:in_bbox("162.72, 514.152, 199.192, 522.152")').text()
 
             result = OCRResult(po_number=po_number, vendor_code=vendor_code)
 
