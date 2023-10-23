@@ -72,7 +72,7 @@ async def add_image_to_pdf(pdf_file: UploadFile, image_file: UploadFile):
         page_height = page_rect[3]
 
         # Define the image dimensions
-        image_width = 180  # Adjust this to the width of your image
+        image_width = 150  # Adjust this to the width of your image
         image_height = 180  # Adjust this to the height of your image
 
         # Calculate the coordinates to place the image at the bottom right
@@ -80,7 +80,7 @@ async def add_image_to_pdf(pdf_file: UploadFile, image_file: UploadFile):
         y = page_height - image_height  # Set to the difference to align with the bottom
 
         # Add the image to the page
-        page.insert_image((x, y, x + 70, y + 110), stream=BytesIO(image_data))
+        page.insert_image((x, y, x + 110, y + 190), stream=BytesIO(image_data))
 
         # Save the modified PDF
         output_pdf = BytesIO()
