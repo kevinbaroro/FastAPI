@@ -13,6 +13,7 @@ app = FastAPI()
 
 class OCRResult(BaseModel):
     po_number: str
+    po_date: str
     vendor_code: str
 
 @app.post("/find_word", response_model=OCRResult)
@@ -31,9 +32,10 @@ async def find_word(pdf_file: UploadFile):
 
             # Find fields
             po_number = pdf.pq('LTTextBoxHorizontal:in_bbox("397.944, 527.256, 455.752, 535.256")').text()
+            po_date = pdf.pq('LTTextBoxHorizontal:in_bbox("397.944, 540.36, 433.528, 548.36")').text()
             vendor_code = pdf.pq('LTTextBoxHorizontal:in_bbox("162.72, 514.152, 199.192, 522.152")').text()
 
-            result = OCRResult(po_number=po_number, vendor_code=vendor_code)
+            result = OCRResult(po_number=po_number,po_date=po_date, vendor_code=vendor_code)
 
             # Return the OCR result as JSON
             return result
