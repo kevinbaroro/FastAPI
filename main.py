@@ -84,9 +84,11 @@ async def add_image_to_pdf(pdf_file: UploadFile, image_file: UploadFile):
         # Add the image to the page
         page.insert_image((x, y, x + 110, y + 190), stream=BytesIO(image_data))
 
+
+
         # Save the modified PDF
         output_pdf = BytesIO()
-        pdf_document.save(output_pdf)
+        pdf_document.save(output_pdf,deflate=True)
         pdf_document.close()
 
         # Return the modified PDF as a streaming response
